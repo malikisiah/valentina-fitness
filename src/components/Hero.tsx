@@ -1,5 +1,7 @@
 import Image from "next/image"
 import { Button } from "./button"
+import { Text } from "./text"
+import { Heading } from "./header"
 
 export default function Hero() {
   return (
@@ -8,13 +10,14 @@ export default function Hero() {
         <div className="px-6 pt-10 pb-24 sm:pb-32 lg:col-span-7 lg:px-0 lg:pt-40 lg:pb-48 xl:col-span-6">
           <div className="mx-auto max-w-lg lg:mx-0">
             <div className="hidden sm:mt-32 sm:flex lg:mt-16"></div>
-            <h1 className="mt-24 text-5xl font-semibold tracking-tight text-pretty text-foreground sm:mt-10 sm:text-7xl">
-              Valentina Fitness
-            </h1>
-            <p className="mt-8 text-lg font-medium text-pretty text-muted-foreground sm:text-xl/8">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.
-            </p>
+
+            <Heading size="3xl">Valentina Fitness</Heading>
+            <Text className="mt-8">
+              A new way to build your body and mind. Get fit, stay healthy, and
+              feel great with our expert-led fitness programs and personalized
+              coaching.
+            </Text>
+
             <div className="mt-10 flex items-center gap-x-6">
               <Button variant="default" size="lg">
                 Get started
