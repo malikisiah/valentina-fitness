@@ -47,14 +47,14 @@ export default function Hero({
             </div>
           </div>
           <div className="mt-16 flow-root sm:mt-24">
-            <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-gray-900/10 ring-inset lg:-m-4 lg:rounded-2xl lg:p-4">
+            <div className="-m-2 rounded-xl p-2 lg:-m-4 lg:rounded-2xl lg:p-4">
               <Image
                 width={4000}
                 height={4000}
                 quality={100}
                 alt=""
                 src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                className="w-304 rounded-md bg-gray-50 shadow-xl ring-1 ring-gray-900/10"
+                className="w-304 rounded-md border border-accent shadow-xl"
               />
             </div>
           </div>
