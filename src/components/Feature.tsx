@@ -66,7 +66,7 @@ export default function Feature() {
               src="https://images.unsplash.com/photo-1623171916712-4f3ec1d37c02?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               width={2432}
               height={1442}
-              className="w-3xl max-w-none rounded-xl shadow-xl ring-1 ring-foreground sm:w-228"
+              className="w-3xl max-w-none rounded-xl border border-accent shadow-xl sm:w-228"
             />
           </div>
         </div>
