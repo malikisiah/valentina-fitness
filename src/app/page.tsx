@@ -8,10 +8,10 @@ export default async function Page() {
   console.log(availability.collection[0].rules)
 
   return (
-    <>
+    <div className="flex min-h-screen flex-col bg-sidebar">
       <Hero availability={availability} />
       <Feature />
       <Footer />
-    </>
+    </div>
   )
 }
