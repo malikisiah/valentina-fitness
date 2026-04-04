@@ -8,7 +8,7 @@ export default function NavbarComponent() {
           <NavbarSection className="space-x-16">
             <NavbarItem href="/">Home</NavbarItem>
             <NavbarItem href="/events">Schedule</NavbarItem>
-            <NavbarItem href="/orders">Orders</NavbarItem>
+            <NavbarItem href="/about">About Me</NavbarItem>
           </NavbarSection>
         </Navbar>
       </div>
