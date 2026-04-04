@@ -7,7 +7,7 @@ export default function NavbarComponent() {
         <Navbar className="justify-center">
           <NavbarSection className="space-x-16">
             <NavbarItem href="/">Home</NavbarItem>
-            <NavbarItem href="/events">Schedule</NavbarItem>
+            <NavbarItem href="/schedule">Schedule</NavbarItem>
             <NavbarItem href="/about">About Me</NavbarItem>
           </NavbarSection>
         </Navbar>
