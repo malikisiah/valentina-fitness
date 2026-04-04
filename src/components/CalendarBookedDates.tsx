@@ -50,7 +50,7 @@ export function CalendarBookedDates({
           onMonthChange={setMonth}
           selected={selected}
           onSelect={onSelect}
-          disabled={bookedDates}
+          disabled={[{ before: new Date() }, ...bookedDates]}
           modifiers={{ booked: bookedDates }}
           modifiersClassNames={{
             booked: "[&>button]:line-through opacity-100",
