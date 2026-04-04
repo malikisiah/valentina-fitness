@@ -11,7 +11,11 @@ import { Subheading } from "./ui/header"
 const SLOT_DURATION_MINUTES = 30
 const BOOKING_BUFFER_MINUTES = 0
 
-function getSlots(from: string, to: string, durationMinutes = SLOT_DURATION_MINUTES): string[] {
+function getSlots(
+  from: string,
+  to: string,
+  durationMinutes = SLOT_DURATION_MINUTES
+): string[] {
   const [fromH, fromM] = from.split(":").map(Number)
   const [toH, toM] = to.split(":").map(Number)
   const end = toH * 60 + toM
@@ -64,8 +68,7 @@ export default function BookSessionModal({
     ? (allRules.find((rule) => rule.wday === selectedWday)?.intervals ?? [])
     : []
 
-  const isToday =
-    selectedDate?.toDateString() === new Date().toDateString()
+  const isToday = selectedDate?.toDateString() === new Date().toDateString()
 
   const availableSlots = intervals
     .flatMap((interval) => getSlots(interval.from, interval.to))
@@ -76,7 +79,9 @@ export default function BookSessionModal({
       const slotMinutes = h * 60 + m
       const now = new Date()
       const nowMinutes = now.getHours() * 60 + now.getMinutes()
-      const cutoff = Math.ceil(nowMinutes / SLOT_DURATION_MINUTES) * SLOT_DURATION_MINUTES + BOOKING_BUFFER_MINUTES
+      const cutoff =
+        Math.ceil(nowMinutes / SLOT_DURATION_MINUTES) * SLOT_DURATION_MINUTES +
+        BOOKING_BUFFER_MINUTES
       return slotMinutes > cutoff
     })
 
@@ -111,17 +116,17 @@ export default function BookSessionModal({
 
           <ol className="mt-4 flex flex-col gap-y-1 text-sm/6 text-muted-foreground">
             {availableSlots.map((slot) => (
-                <li
-                  key={slot}
-                  onClick={() => setSelectedSlot(slot)}
-                  className={`group justify-left flex cursor-pointer items-center gap-x-4 rounded-xl px-4 py-2 hover:bg-muted ${selectedSlot === slot ? "bg-muted font-medium text-foreground" : ""}`}
-                >
-                  <Text className="mt-0.5">{slot}</Text>
-                  {selectedSlot === slot && (
-                    <Button className="ml-auto">Book</Button>
-                  )}
-                </li>
-              ))}
+              <li
+                key={slot}
+                onClick={() => setSelectedSlot(slot)}
+                className={`group justify-left flex cursor-pointer items-center gap-x-4 rounded-xl px-4 py-2 hover:bg-muted ${selectedSlot === slot ? "bg-muted font-medium text-foreground" : ""}`}
+              >
+                <Text className="mt-0.5">{slot}</Text>
+                {selectedSlot === slot && (
+                  <Button className="ml-auto">Book</Button>
+                )}
+              </li>
+            ))}
           </ol>
         </section>
       </div>

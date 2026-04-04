@@ -5,11 +5,23 @@ import * as React from "react"
 import { Calendar } from "~/components/ui/calendar"
 import { Card, CardContent } from "~/components/ui/card"
 
-type Weekday = "sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday"
+type Weekday =
+  | "sunday"
+  | "monday"
+  | "tuesday"
+  | "wednesday"
+  | "thursday"
+  | "friday"
+  | "saturday"
 
 const WEEKDAY_INDEX: Record<Weekday, number> = {
-  sunday: 0, monday: 1, tuesday: 2, wednesday: 3,
-  thursday: 4, friday: 5, saturday: 6,
+  sunday: 0,
+  monday: 1,
+  tuesday: 2,
+  wednesday: 3,
+  thursday: 4,
+  friday: 5,
+  saturday: 6,
 }
 
 function getDatesForWeekdays(weekdays: Weekday[], month: Date): Date[] {
