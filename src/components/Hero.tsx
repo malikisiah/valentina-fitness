@@ -4,8 +4,11 @@ import { Button } from "./ui/button"
 import { Heading } from "./ui/header"
 import { Text } from "./ui/text"
 import Image from "next/image"
-import BookSessionModal from "./BookSessionModal"
-import { AvailabilityResponse } from "~/lib/calendly"
+import Link from "next/link"
+import BookSession from "./BookSession"
+import { AvailabilityResponse, AvailabilityRule } from "~/lib/calendly"
+import Modal from "./ui/modal"
+import { getNearestAvailableDate } from "~/lib/scheduling-utils"
 
 export default function Hero({
   availability,
@@ -13,6 +16,9 @@ export default function Hero({
   availability: AvailabilityResponse
 }) {
   const [open, setOpen] = useState(false)
+  const allRules: AvailabilityRule[] = availability.collection.flatMap(
+    (schedule) => schedule.rules
+  )
   return (
     <div className="relative isolate pt-14">
       <div
@@ -41,9 +47,17 @@ export default function Hero({
               <Button variant="default" size="lg">
                 Get started
               </Button>
-              <Button onClick={() => setOpen(true)} variant="outline" size="lg">
+              <Button
+                onClick={() => setOpen(true)}
+                variant="outline"
+                size="lg"
+                className="hidden sm:inline-flex"
+              >
                 Book Session
               </Button>
+              <Link href="/schedule" className="sm:hidden">
+                <Button variant="outline" size="lg">Book Session</Button>
+              </Link>
             </div>
           </div>
           <div className="mt-16 flow-root sm:mt-24">
@@ -72,11 +86,12 @@ export default function Hero({
           className="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-primary to-accent opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
         />
       </div>
-      <BookSessionModal
-        open={open}
-        setOpen={setOpen}
-        availability={availability}
-      />
+      <Modal open={open} setOpen={setOpen}>
+        <BookSession
+          availability={availability}
+          initialDate={getNearestAvailableDate(allRules)}
+        />
+      </Modal>
     </div>
   )
 }
