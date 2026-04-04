@@ -5,7 +5,6 @@ import { calendlyApi } from "~/lib/calendly"
 
 export default async function Page() {
   const availability = await calendlyApi.getAvailability()
-  console.log(availability.collection[0].rules)
 
   return (
     <div className="flex min-h-screen flex-col bg-sidebar">
