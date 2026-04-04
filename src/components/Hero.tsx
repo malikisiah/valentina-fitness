@@ -56,7 +56,9 @@ export default function Hero({
                 Book Session
               </Button>
               <Link href="/schedule" className="sm:hidden">
-                <Button variant="outline" size="lg">Book Session</Button>
+                <Button variant="outline" size="lg">
+                  Book Session
+                </Button>
               </Link>
             </div>
           </div>

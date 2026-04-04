@@ -4,7 +4,10 @@ import { useState } from "react"
 
 import { CalendarBookedDates } from "./CalendarBookedDates"
 import { Text } from "./ui/text"
-import { type AvailabilityResponse, type AvailabilityRule } from "~/lib/calendly"
+import {
+  type AvailabilityResponse,
+  type AvailabilityRule,
+} from "~/lib/calendly"
 import { Button } from "./ui/button"
 import { Subheading } from "./ui/header"
 import { getUnavailableDays, getSlotsForDate } from "~/lib/scheduling-utils"
@@ -28,7 +31,9 @@ export default function BookSession({
     undefined
   )
 
-  const availableSlots = selectedDate ? getSlotsForDate(allRules, selectedDate) : []
+  const availableSlots = selectedDate
+    ? getSlotsForDate(allRules, selectedDate)
+    : []
 
   return (
     <div className="md:grid md:grid-cols-2 md:divide-x md:divide-primary-foreground">
