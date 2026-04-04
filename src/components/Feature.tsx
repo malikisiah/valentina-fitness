@@ -4,8 +4,8 @@ import {
   ServerIcon,
 } from "@heroicons/react/20/solid"
 import Image from "next/image"
-import { Heading } from "./header"
-import { Text } from "./text"
+import { Heading } from "./ui/header"
+import { Text } from "./ui/text"
 
 const features = [
   {

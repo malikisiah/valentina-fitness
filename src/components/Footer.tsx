@@ -1,7 +1,7 @@
 import { SVGProps } from "react"
 import { JSX } from "react/jsx-runtime"
-import { Link } from "./link"
-import { Text } from "./text"
+import { Link } from "./ui/link"
+import { Text } from "./ui/text"
 
 const navigation = {
   main: [

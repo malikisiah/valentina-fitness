@@ -1,9 +1,14 @@
+"use client"
+import { useState } from "react"
 import Image from "next/image"
-import { Button } from "./button"
-import { Text } from "./text"
-import { Heading } from "./header"
+import { Button } from "./ui/button"
+import { Text } from "./ui/text"
+import { Heading } from "./ui/header"
+import BookSessionModal from "./BookSessionModal"
+import { AvailabilityResponse } from "~/lib/calendly"
 
-export default function Hero() {
+export default function Hero({ availability }: { availability: AvailabilityResponse }) {
+  const [open, setOpen] = useState(false)
   return (
     <div className="relative bg-background">
       <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
@@ -23,7 +28,7 @@ export default function Hero() {
                 Get started
               </Button>
 
-              <Button variant="outline" size="lg">
+              <Button onClick={() => setOpen(true)} variant="outline" size="lg">
                 Book Session
               </Button>
             </div>
@@ -40,6 +45,11 @@ export default function Hero() {
           />
         </div>
       </div>
+      <BookSessionModal
+        open={open}
+        setOpen={setOpen}
+        availability={availability}
+      />
     </div>
   )
 }
