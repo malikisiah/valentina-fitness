@@ -25,3 +25,6 @@ jobs:
 
       - name: Typecheck
         run: npm run typecheck
+
+      - name: Format check
+        run: npx prettier --check "**/*.{ts,tsx}"
