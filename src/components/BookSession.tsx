@@ -11,13 +11,16 @@ import {
 import { Button } from "./ui/button"
 import { Subheading } from "./ui/header"
 import { getUnavailableDays, getSlotsForDate } from "~/lib/scheduling-utils"
+import { Link } from "./ui/link"
 
 export default function BookSession({
   availability,
   initialDate,
+  initialSlot,
 }: {
   availability: AvailabilityResponse
   initialDate: Date
+  initialSlot?: string
 }) {
   const allRules: AvailabilityRule[] = availability.collection.flatMap(
     (schedule) => schedule.rules
@@ -28,7 +31,7 @@ export default function BookSession({
     initialDate
   )
   const [selectedSlot, setSelectedSlot] = useState<string | undefined>(
-    undefined
+    initialSlot
   )
 
   const availableSlots = selectedDate
@@ -73,7 +76,12 @@ export default function BookSession({
             >
               <Text className="mt-0.5">{slot}</Text>
               {selectedSlot === slot && (
-                <Button className="ml-auto">Book</Button>
+                <Link
+                  href={`/schedule/confirm?date=${selectedDate!.toISOString()}&slot=${slot}`}
+                  className="ml-auto"
+                >
+                  <Button>Book</Button>
+                </Link>
               )}
             </li>
           ))}
