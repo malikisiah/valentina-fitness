@@ -47,7 +47,9 @@ export default function ConfirmSessionForm({
     handleSubmit,
     formState: { errors },
   } = useForm<BookingFormValues>({
-    resolver: zodResolver(bookingSchema as $ZodType<BookingFormValues, BookingFormValues>),
+    resolver: zodResolver(
+      bookingSchema as $ZodType<BookingFormValues, BookingFormValues>
+    ),
   })
 
   function onSubmit(data: BookingFormValues): void {
