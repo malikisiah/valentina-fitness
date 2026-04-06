@@ -2,14 +2,27 @@ import { calendlyApi } from "~/lib/calendly"
 import BookSession from "~/components/BookSession"
 import { Subheading } from "~/components/ui/header"
 import { Text } from "~/components/ui/text"
-import { getNearestAvailableDate } from "~/lib/scheduling-utils"
+import {
+  getNearestAvailableDate,
+  isSlotAvailable,
+} from "~/lib/scheduling-utils"
 import { type AvailabilityRule } from "~/lib/calendly"
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ date?: string; slot?: string }>
+}) {
+  const { date, slot } = await searchParams
   const availability = await calendlyApi.getAvailability()
   const allRules: AvailabilityRule[] = availability.collection.flatMap(
     (schedule) => schedule.rules
   )
+  const initialDate = date ? new Date(date) : getNearestAvailableDate(allRules)
+  const initialSlot =
+    date && slot && isSlotAvailable(allRules, new Date(date), slot)
+      ? slot
+      : undefined
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-16">
@@ -24,7 +37,8 @@ export default async function Page() {
       <div className="mt-8">
         <BookSession
           availability={availability}
-          initialDate={getNearestAvailableDate(allRules)}
+          initialDate={initialDate}
+          initialSlot={initialSlot}
         />
       </div>
     </div>
