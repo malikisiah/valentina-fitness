@@ -6,6 +6,7 @@ import { ThemeProvider } from "~/components/theme-provider"
 
 import { cn } from "~/lib/utils"
 import NavbarComponent from "~/components/Navbar"
+import Footer from "~/components/Footer"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -34,6 +35,7 @@ export default function RootLayout({
         <ThemeProvider>
           <NavbarComponent />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
