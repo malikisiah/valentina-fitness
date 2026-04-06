@@ -85,6 +85,25 @@ const getSlotsForDate = (allRules: AvailabilityRule[], date: Date) => {
 }
 
 /**
+ * Returns true if the given slot is still available for the given date.
+ * Returns false if the date is in the past or the slot has been filtered out
+ * (e.g. already passed today).
+ * @param allRules
+ * @param date
+ * @param slot
+ */
+const isSlotAvailable = (
+  allRules: AvailabilityRule[],
+  date: Date,
+  slot: string
+): boolean => {
+  const today = new Date()
+  today.setHours(0, 0, 0, 0)
+  if (date < today) return false
+  return getSlotsForDate(allRules, date).includes(slot)
+}
+
+/**
  * Returns the nearest date (from today) that has at least one available slot.
  * @param allRules
  */
@@ -103,4 +122,5 @@ export {
   getAvailableSlots,
   getSlotsForDate,
   getNearestAvailableDate,
+  isSlotAvailable,
 }

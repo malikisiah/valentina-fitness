@@ -30,6 +30,32 @@ export interface AvailabilityResponse {
   collection: AvailabilitySchedule[]
 }
 
+export interface BookingUrlParams {
+  name: string
+  email: string
+  notes?: string
+  date: Date
+  slot: string // "HH:MM - HH:MM"
+}
+
+function buildBookingUrl(params: BookingUrlParams): string {
+  const username = process.env.NEXT_PUBLIC_CALENDLY_USERNAME
+  const eventSlug = process.env.NEXT_PUBLIC_CALENDLY_EVENT_SLUG
+
+  if (!username || !eventSlug) {
+    throw new Error("Missing Calendly configuration")
+  }
+
+  const [startTime] = params.slot.split(" - ")
+  const isoDate = params.date.toISOString().split("T")[0]
+  const dateTimeSegment = `${isoDate}T${startTime}:00`
+
+  const query = new URLSearchParams({ name: params.name, email: params.email })
+  if (params.notes) query.set("a1", params.notes)
+
+  return `https://calendly.com/${username}/${eventSlug}/${dateTimeSegment}?${query.toString()}`
+}
+
 async function getAvailability(): Promise<AvailabilityResponse> {
   const token = process.env.CALENDLY_API_TOKEN!
   const userUri = process.env.CALENDLY_USER_URI!
@@ -44,4 +70,5 @@ async function getAvailability(): Promise<AvailabilityResponse> {
 
 export const calendlyApi = {
   getAvailability,
+  buildBookingUrl,
 }
