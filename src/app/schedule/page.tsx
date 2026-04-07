@@ -9,6 +9,7 @@ import {
 import { type AvailabilityRule } from "~/lib/calendly"
 import { Card } from "~/components/ui/card"
 import { getLocale, getTranslations } from "~/lib/i18n"
+import FadeIn from "~/components/FadeIn"
 
 export default async function Page({
   searchParams,
@@ -33,17 +34,17 @@ export default async function Page({
   return (
     <>
       <Card className="bg-card p-8">
-        <div>
+        <FadeIn>
           <Subheading className="tr">{t.schedule.title}</Subheading>
           <Text>{t.schedule.description}</Text>
-        </div>
-        <div className="mt-8">
+        </FadeIn>
+        <FadeIn className="mt-8">
           <BookSession
             availability={availability}
             initialDate={initialDate}
             initialSlot={initialSlot}
           />
-        </div>
+        </FadeIn>
       </Card>
     </>
   )
