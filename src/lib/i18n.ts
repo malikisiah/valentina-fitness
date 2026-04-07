@@ -98,6 +98,8 @@ const translations = {
 
 export type Translations = (typeof translations)[Locale]
 
-export function getTranslations<L extends Locale>(locale: L): (typeof translations)[L] {
+export function getTranslations<L extends Locale>(
+  locale: L
+): (typeof translations)[L] {
   return translations[locale]
 }
