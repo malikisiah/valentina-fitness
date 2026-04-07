@@ -10,7 +10,7 @@ import {
   VideoCameraIcon,
   CalendarIcon,
 } from "@heroicons/react/20/solid"
-import { Text } from "~/components/ui/text"
+import { Strong, Text } from "~/components/ui/text"
 import { Input } from "~/components/ui/input"
 import { Textarea } from "~/components/ui/textarea"
 import { Button } from "~/components/ui/button"
@@ -150,13 +150,23 @@ export default function ConfirmSessionForm({
         {bookingError && (
           <ErrorMessage className="mt-4">{bookingError}</ErrorMessage>
         )}
+
+        <div className="mt-6 rounded-lg border border-border bg-muted px-4 py-3 text-sm text-muted-foreground">
+          <Text>
+            Clicking <Strong>To Calendly </Strong>
+            will open Calendly in a new tab with your name, email, and selected
+            time pre-filled — you won&apos;t need to re-enter anything. Review
+            the details there and confirm to finalize your booking.
+          </Text>
+        </div>
+
         <div className="mt-6 flex items-center justify-end gap-x-6">
           <Link href={backUrl}>
             <Button variant="secondary" type="button">
               Back
             </Button>
           </Link>
-          <Button type="submit">Save</Button>
+          <Button type="submit">To Calendly</Button>
         </div>
       </form>
     </Card>
