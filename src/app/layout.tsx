@@ -34,7 +34,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <NavbarComponent />
-          {children}
+          <main className="mx-auto max-w-7xl px-4 py-16">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
