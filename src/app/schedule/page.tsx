@@ -7,6 +7,7 @@ import {
   isSlotAvailable,
 } from "~/lib/scheduling-utils"
 import { type AvailabilityRule } from "~/lib/calendly"
+import { Card } from "~/components/ui/card"
 
 export default async function Page({
   searchParams,
@@ -25,22 +26,23 @@ export default async function Page({
       : undefined
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16">
-      <div>
-        <Subheading className="tr">Schedule an Intro Session</Subheading>
-        <Text>
-          {" "}
-          We can hop on a call to discuss your fitness goals and how we can help
-          you achieve them.
-        </Text>
-      </div>
-      <div className="mt-8">
-        <BookSession
-          availability={availability}
-          initialDate={initialDate}
-          initialSlot={initialSlot}
-        />
-      </div>
-    </div>
+    <>
+      <Card className="bg-card p-8">
+        <div>
+          <Subheading className="tr">Schedule an Intro Session</Subheading>
+          <Text>
+            We can hop on a call to discuss your fitness goals and how we can
+            help you achieve them.
+          </Text>
+        </div>
+        <div className="mt-8">
+          <BookSession
+            availability={availability}
+            initialDate={initialDate}
+            initialSlot={initialSlot}
+          />
+        </div>
+      </Card>
+    </>
   )
 }

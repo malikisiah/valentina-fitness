@@ -20,7 +20,7 @@ export default function Hero({
     (schedule) => schedule.rules
   )
   return (
-    <div className="relative isolate pt-14">
+    <div className="relative isolate">
       <div
         aria-hidden="true"
         className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -33,7 +33,7 @@ export default function Hero({
           className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-primary to-accent opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
         />
       </div>
-      <div className="py-24 sm:py-32 lg:pb-40">
+      <div className="py-24 lg:pb-40">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <Heading size="3xl">Valentina Fitness</Heading>
@@ -45,7 +45,7 @@ export default function Hero({
 
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button variant="default" size="lg">
-                Get started
+                Learn More
               </Button>
               <Button
                 onClick={() => setOpen(true)}
