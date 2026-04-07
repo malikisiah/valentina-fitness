@@ -1,3 +1,4 @@
+"use client"
 import {
   CloudArrowUpIcon,
   LockClosedIcon,
@@ -6,6 +7,7 @@ import {
 import Image from "next/image"
 import { Heading } from "./ui/header"
 import { Text } from "./ui/text"
+import FadeIn from "./FadeIn"
 
 const features = [
   {
@@ -35,32 +37,41 @@ export default function Feature() {
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:ml-auto lg:pt-4 lg:pl-4">
             <div className="lg:max-w-lg">
-              <Heading>Feature Highlights</Heading>
-              <Text className="mt-6" size="lg">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Maiores impedit perferendis suscipit eaque, iste dolor
-                cupiditate blanditiis ratione.
-              </Text>
+              <FadeIn>
+                <Heading>Feature Highlights</Heading>
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <Text className="mt-6" size="lg">
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Maiores impedit perferendis suscipit eaque, iste dolor
+                  cupiditate blanditiis ratione.
+                </Text>
+              </FadeIn>
 
               <dl className="text-foreground-muted mt-10 max-w-xl space-y-8 text-base/7 lg:max-w-none">
-                {features.map((feature) => (
-                  <div key={feature.name} className="relative pl-9">
-                    <dt className="inline font-semibold text-foreground">
-                      <feature.icon
-                        aria-hidden="true"
-                        className="absolute top-1 left-1 size-5 text-primary"
-                      />
-                      {feature.name}
-                    </dt>{" "}
-                    <dd className="inline">
-                      <Text>{feature.description}</Text>
-                    </dd>
-                  </div>
+                {features.map((feature, i) => (
+                  <FadeIn key={feature.name} delay={0.15 * (i + 1)}>
+                    <div className="relative pl-9">
+                      <dt className="inline font-semibold text-foreground">
+                        <feature.icon
+                          aria-hidden="true"
+                          className="absolute top-1 left-1 size-5 text-primary"
+                        />
+                        {feature.name}
+                      </dt>{" "}
+                      <dd className="inline">
+                        <Text>{feature.description}</Text>
+                      </dd>
+                    </div>
+                  </FadeIn>
                 ))}
               </dl>
             </div>
           </div>
-          <div className="flex items-start justify-end lg:order-first">
+          <FadeIn
+            delay={0.2}
+            className="flex items-start justify-end lg:order-first"
+          >
             <Image
               alt="Product screenshot"
               src="https://images.unsplash.com/photo-1623171916712-4f3ec1d37c02?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
@@ -68,7 +79,7 @@ export default function Feature() {
               height={1442}
               className="w-3xl max-w-none rounded-xl border border-accent shadow-xl sm:w-228"
             />
-          </div>
+          </FadeIn>
         </div>
       </div>
     </div>

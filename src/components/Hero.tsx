@@ -10,6 +10,7 @@ import { AvailabilityResponse, AvailabilityRule } from "~/lib/calendly"
 import Modal from "./ui/modal"
 import { getNearestAvailableDate } from "~/lib/scheduling-utils"
 import { Translations } from "~/lib/i18n"
+import FadeIn from "./FadeIn"
 
 export default function Hero({
   availability,
@@ -39,32 +40,40 @@ export default function Hero({
       <div className="py-24 lg:pb-40">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <Heading size="3xl">
-              FitSoul<span className="align-top text-sm">™</span>
-            </Heading>
-            <Subheading size="lg">{t.tagline}</Subheading>
-            <Text>{t.description}</Text>
+            <FadeIn>
+              <Heading size="3xl">
+                FitSoul<span className="align-top text-sm">™</span>
+              </Heading>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <Subheading size="lg">{t.tagline}</Subheading>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <Text>{t.description}</Text>
+            </FadeIn>
 
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Button variant="default" size="lg">
-                {t.learnMore}
-              </Button>
-              <Button
-                onClick={() => setOpen(true)}
-                variant="outline"
-                size="lg"
-                className="hidden sm:inline-flex"
-              >
-                {t.bookSession}
-              </Button>
-              <Link href="/schedule" className="sm:hidden">
-                <Button variant="outline" size="lg">
+            <FadeIn delay={0.3}>
+              <div className="mt-10 flex items-center justify-center gap-x-6">
+                <Button variant="default" size="lg">
+                  {t.learnMore}
+                </Button>
+                <Button
+                  onClick={() => setOpen(true)}
+                  variant="outline"
+                  size="lg"
+                  className="hidden sm:inline-flex"
+                >
                   {t.bookSession}
                 </Button>
-              </Link>
-            </div>
+                <Link href="/schedule" className="sm:hidden">
+                  <Button variant="outline" size="lg">
+                    {t.bookSession}
+                  </Button>
+                </Link>
+              </div>
+            </FadeIn>
           </div>
-          <div className="mt-16 flow-root sm:mt-24">
+          <FadeIn delay={0.4} className="mt-16 flow-root sm:mt-24">
             <div className="-m-2 rounded-xl p-2 lg:-m-4 lg:rounded-2xl lg:p-4">
               <Image
                 width={4000}
@@ -75,7 +84,7 @@ export default function Hero({
                 className="w-304 rounded-md border border-accent shadow-xl"
               />
             </div>
-          </div>
+          </FadeIn>
         </div>
       </div>
       <div
