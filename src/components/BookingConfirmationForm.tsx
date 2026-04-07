@@ -29,13 +29,16 @@ import {
   type BookingFormValues,
 } from "~/lib/validations/booking"
 import { calendlyApi } from "~/lib/calendly"
+import { Translations } from "~/lib/i18n"
 
 export default function ConfirmSessionForm({
   date,
   slot,
+  t,
 }: {
   date: Date
   slot: string
+  t: Translations["confirm"]
 }) {
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -69,21 +72,21 @@ export default function ConfirmSessionForm({
           <div className="grid grid-cols-1 gap-x-8 md:grid-cols-3">
             <div>
               <Subheading>Valentina</Subheading>
-              <Heading size="xl"> 30 min intro session</Heading>
+              <Heading size="xl">{t.sessionTitle}</Heading>
               <div className="mt-12 flex-col space-y-2">
                 <div className="flex items-center gap-x-3">
                   <ClockIcon
                     className="h-5 w-5 flex-none text-gray-400"
                     aria-hidden="true"
                   />
-                  <Text>30 min</Text>
+                  <Text>{t.duration}</Text>
                 </div>
                 <div className="flex items-center gap-x-3">
                   <VideoCameraIcon
                     className="h-5 w-5 flex-none text-gray-400"
                     aria-hidden="true"
                   />
-                  <Text>Video call</Text>
+                  <Text>{t.videoCall}</Text>
                 </div>
                 <div className="flex items-center gap-x-3">
                   <CalendarIcon
@@ -105,11 +108,11 @@ export default function ConfirmSessionForm({
             <Fieldset className="grid max-w-2xl grid-cols-1 gap-x-6 sm:grid-cols-6 md:col-span-2">
               <FieldGroup className="sm:col-span-4">
                 <Field>
-                  <Label>Name</Label>
+                  <Label>{t.nameLabel}</Label>
                   <Input
                     {...register("name")}
                     type="text"
-                    placeholder="Your name"
+                    placeholder={t.namePlaceholder}
                     invalid={!!errors.name}
                   />
                   {errors.name && (
@@ -120,11 +123,11 @@ export default function ConfirmSessionForm({
 
               <FieldGroup className="col-span-full">
                 <Field>
-                  <Label>Email</Label>
+                  <Label>{t.emailLabel}</Label>
                   <Input
                     {...register("email")}
                     type="email"
-                    placeholder="you@example.com"
+                    placeholder={t.emailPlaceholder}
                     invalid={!!errors.email}
                   />
                   {errors.email && (
@@ -135,10 +138,10 @@ export default function ConfirmSessionForm({
 
               <FieldGroup className="col-span-full">
                 <Field>
-                  <Label>Notes</Label>
+                  <Label>{t.notesLabel}</Label>
                   <Textarea
                     {...register("notes")}
-                    placeholder="Anything you'd like me to know before our session?"
+                    placeholder={t.notesPlaceholder}
                     rows={4}
                   />
                 </Field>
@@ -153,20 +156,18 @@ export default function ConfirmSessionForm({
 
         <div className="mt-6 rounded-lg border border-border bg-muted px-4 py-3 text-sm text-muted-foreground">
           <Text>
-            Clicking <Strong>To Calendly </Strong>
-            will open Calendly in a new tab with your name, email, and selected
-            time pre-filled — you won&apos;t need to re-enter anything. Review
-            the details there and confirm to finalize your booking.
+            <Strong>{t.toCalendly} </Strong>
+            {t.calendlyNotice}
           </Text>
         </div>
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
           <Link href={backUrl}>
             <Button variant="secondary" type="button">
-              Back
+              {t.back}
             </Button>
           </Link>
-          <Button type="submit">To Calendly</Button>
+          <Button type="submit">{t.toCalendly}</Button>
         </div>
       </form>
     </Card>
