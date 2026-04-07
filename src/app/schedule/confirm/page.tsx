@@ -1,4 +1,5 @@
 import ConfirmSessionForm from "../../../components/BookingConfirmationForm"
+import { Heading } from "~/components/ui/header"
 
 export default async function Page({
   searchParams,
@@ -9,17 +10,15 @@ export default async function Page({
 
   if (!date || !slot) {
     return (
-      <div className="mx-auto max-w-7xl px-4 py-16">
-        <p className="text-center text-sm/6 text-gray-600">
-          Invalid session details. Please go back and select a valid session.
-        </p>
-      </div>
+      <Heading>
+        Invalid session details. Please go back and select a valid session.
+      </Heading>
     )
   }
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-7xl justify-center px-4 py-16">
+    <>
       <ConfirmSessionForm date={new Date(date)} slot={slot} />
-    </div>
+    </>
   )
 }
