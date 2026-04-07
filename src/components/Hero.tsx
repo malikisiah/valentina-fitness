@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react"
 import { Button } from "./ui/button"
-import { Heading } from "./ui/header"
+import { Heading, Subheading } from "./ui/header"
 import { Text } from "./ui/text"
 import Image from "next/image"
 import Link from "next/link"
@@ -9,11 +9,14 @@ import BookSession from "./BookSession"
 import { AvailabilityResponse, AvailabilityRule } from "~/lib/calendly"
 import Modal from "./ui/modal"
 import { getNearestAvailableDate } from "~/lib/scheduling-utils"
+import { Translations } from "~/lib/i18n"
 
 export default function Hero({
   availability,
+  t,
 }: {
   availability: AvailabilityResponse
+  t: Translations["hero"]
 }) {
   const [open, setOpen] = useState(false)
   const allRules: AvailabilityRule[] = availability.collection.flatMap(
@@ -36,16 +39,15 @@ export default function Hero({
       <div className="py-24 lg:pb-40">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <Heading size="3xl">Valentina Fitness</Heading>
-            <Text>
-              A new way to build your body and mind. Get fit, stay healthy, and
-              feel great with our expert-led fitness programs and personalized
-              coaching.
-            </Text>
+            <Heading size="3xl">
+              FitSoul<span className="align-top text-sm">™</span>
+            </Heading>
+            <Subheading size="lg">{t.tagline}</Subheading>
+            <Text>{t.description}</Text>
 
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button variant="default" size="lg">
-                Learn More
+                {t.learnMore}
               </Button>
               <Button
                 onClick={() => setOpen(true)}
@@ -53,11 +55,11 @@ export default function Hero({
                 size="lg"
                 className="hidden sm:inline-flex"
               >
-                Book Session
+                {t.bookSession}
               </Button>
               <Link href="/schedule" className="sm:hidden">
                 <Button variant="outline" size="lg">
-                  Book Session
+                  {t.bookSession}
                 </Button>
               </Link>
             </div>

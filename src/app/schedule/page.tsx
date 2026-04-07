@@ -8,6 +8,7 @@ import {
 } from "~/lib/scheduling-utils"
 import { type AvailabilityRule } from "~/lib/calendly"
 import { Card } from "~/components/ui/card"
+import { getLocale, getTranslations } from "~/lib/i18n"
 
 export default async function Page({
   searchParams,
@@ -15,7 +16,11 @@ export default async function Page({
   searchParams: Promise<{ date?: string; slot?: string }>
 }) {
   const { date, slot } = await searchParams
-  const availability = await calendlyApi.getAvailability()
+  const [availability, locale] = await Promise.all([
+    calendlyApi.getAvailability(),
+    getLocale(),
+  ])
+  const t = getTranslations(locale)
   const allRules: AvailabilityRule[] = availability.collection.flatMap(
     (schedule) => schedule.rules
   )
@@ -29,11 +34,8 @@ export default async function Page({
     <>
       <Card className="bg-card p-8">
         <div>
-          <Subheading className="tr">Schedule an Intro Session</Subheading>
-          <Text>
-            We can hop on a call to discuss your fitness goals and how we can
-            help you achieve them.
-          </Text>
+          <Subheading className="tr">{t.schedule.title}</Subheading>
+          <Text>{t.schedule.description}</Text>
         </div>
         <div className="mt-8">
           <BookSession
