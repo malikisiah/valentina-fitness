@@ -39,7 +39,7 @@ export default function BookSession({
     : []
 
   return (
-    <div className="md:grid md:grid-cols-2 md:divide-x md:divide-primary-foreground">
+    <div className="md:grid md:grid-cols-2">
       <CalendarBookedDates
         unavailableDays={unavailableDays}
         selected={selectedDate}
