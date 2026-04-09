@@ -12,7 +12,6 @@ export default async function NavbarComponent() {
           <NavbarSection className="space-x-16">
             <NavbarItem href="/">{t.nav.home}</NavbarItem>
             <NavbarItem href="/schedule">{t.nav.schedule}</NavbarItem>
-            <NavbarItem href="/about">{t.nav.about}</NavbarItem>
           </NavbarSection>
         </Navbar>
       </div>
