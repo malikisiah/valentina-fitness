@@ -62,7 +62,7 @@ async function getAvailability(): Promise<AvailabilityResponse> {
 
   const res = await fetch(
     `https://api.calendly.com/user_availability_schedules?user=${encodeURIComponent(userUri)}`,
-    { headers: { Authorization: `Bearer ${token}` } }
+    { headers: { Authorization: `Bearer ${token}` }, cache: "no-store" }
   )
   if (!res.ok) throw new Error(`Calendly API error: ${res.status}`)
   return res.json() as Promise<AvailabilityResponse>
