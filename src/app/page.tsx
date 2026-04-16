@@ -1,5 +1,4 @@
 import Content from "~/components/Content"
-import Feature from "~/components/Feature"
 import Hero from "~/components/Hero"
 import Mission from "~/components/Mission"
 import { calendlyApi } from "~/lib/calendly"
