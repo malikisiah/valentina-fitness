@@ -36,8 +36,8 @@ const translations = {
     confirm: {
       invalidSession:
         "Invalid session details. Please go back and select a valid session.",
-      sessionTitle: "30 min intro session",
-      duration: "30 min",
+      sessionTitle: "90 min intro session",
+      duration: "90 min",
       videoCall: "Video call",
       nameLabel: "Name",
       namePlaceholder: "Your name",
@@ -105,8 +105,8 @@ const translations = {
     confirm: {
       invalidSession:
         "Detalles de sesión inválidos. Por favor regresa y selecciona una sesión válida.",
-      sessionTitle: "Sesión introductoria de 30 min",
-      duration: "30 min",
+      sessionTitle: "Sesión introductoria de 90 min",
+      duration: "90 min",
       videoCall: "Videollamada",
       nameLabel: "Nombre",
       namePlaceholder: "Tu nombre",

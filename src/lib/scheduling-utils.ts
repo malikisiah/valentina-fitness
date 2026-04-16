@@ -20,7 +20,7 @@ const fmt = (minutes: number) =>
   `${String(Math.floor(minutes / 60)).padStart(2, "0")}:${String(minutes % 60).padStart(2, "0")}`
 
 /**
- * Returns the available slots between the given start and end times. Each slot is formatted as "HH:MM - HH:MM". The duration of each slot can be customized by providing the `durationMinutes` parameter (default is 30 minutes).
+ * Returns the available slots between the given start and end times. Each slot is formatted as "HH:MM - HH:MM". The duration of each slot can be customized by providing the `durationMinutes` parameter (default is 90 minutes).
  * @param from
  * @param to
  * @param durationMinutes
