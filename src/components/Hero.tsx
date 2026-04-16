@@ -4,6 +4,7 @@ import { Button } from "./ui/button"
 import { Heading, Subheading } from "./ui/header"
 import { Text } from "./ui/text"
 import Image from "next/image"
+import stoic from "../../public/stoic.png"
 import Link from "next/link"
 import BookSession from "./BookSession"
 import { AvailabilityResponse, AvailabilityRule } from "~/lib/calendly"
@@ -54,7 +55,15 @@ export default function Hero({
 
             <FadeIn delay={0.3}>
               <div className="mt-10 flex items-center justify-center gap-x-6">
-                <Button variant="default" size="lg">
+                <Button
+                  variant="default"
+                  size="lg"
+                  onClick={() =>
+                    document
+                      .getElementById("mission")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                >
                   {t.learnMore}
                 </Button>
                 <Button
@@ -73,15 +82,12 @@ export default function Hero({
               </div>
             </FadeIn>
           </div>
-          <FadeIn delay={0.4} className="mt-16 flow-root sm:mt-24">
-            <div className="-m-2 rounded-xl p-2 lg:-m-4 lg:rounded-2xl lg:p-4">
+          <FadeIn delay={0.4} className="mt-16 flex justify-center sm:mt-24">
+            <div className="w-full max-w-3xl rounded-2xl p-2 sm:max-w-xl lg:max-w-3xl">
               <Image
-                width={4000}
-                height={4000}
-                quality={100}
-                alt=""
-                src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                className="w-304 rounded-md border border-accent shadow-xl"
+                alt="Valentina Fernandez"
+                src={stoic}
+                className="aspect-square w-full rounded-xl border border-accent object-cover shadow-xl"
               />
             </div>
           </FadeIn>
