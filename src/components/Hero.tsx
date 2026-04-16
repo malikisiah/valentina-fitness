@@ -54,7 +54,15 @@ export default function Hero({
 
             <FadeIn delay={0.3}>
               <div className="mt-10 flex items-center justify-center gap-x-6">
-                <Button variant="default" size="lg">
+                <Button
+                  variant="default"
+                  size="lg"
+                  onClick={() =>
+                    document
+                      .getElementById("mission")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                >
                   {t.learnMore}
                 </Button>
                 <Button
