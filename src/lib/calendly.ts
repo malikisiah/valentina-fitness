@@ -36,6 +36,23 @@ export interface BookingUrlParams {
   notes?: string
   date: Date
   slot: string // "HH:MM - HH:MM"
+  timezone: string // IANA timezone, e.g. "America/Chicago"
+}
+
+function getUtcOffsetString(timezone: string, date: Date): string {
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: timezone,
+    timeZoneName: "shortOffset",
+  })
+  const parts = formatter.formatToParts(date)
+  const offsetPart = parts.find((p) => p.type === "timeZoneName")?.value ?? ""
+  // shortOffset gives "GMT-5" or "GMT+5:30" — convert to ±HH:MM
+  const match = offsetPart.match(/GMT([+-])(\d+)(?::(\d+))?/)
+  if (!match) return ""
+  const sign = match[1]
+  const hours = match[2].padStart(2, "0")
+  const minutes = (match[3] ?? "0").padStart(2, "0")
+  return `${sign}${hours}:${minutes}`
 }
 
 function buildBookingUrl(params: BookingUrlParams): string {
@@ -48,7 +65,8 @@ function buildBookingUrl(params: BookingUrlParams): string {
 
   const [startTime] = params.slot.split(" - ")
   const isoDate = params.date.toISOString().split("T")[0]
-  const dateTimeSegment = `${isoDate}T${startTime}:00`
+  const tzOffset = getUtcOffsetString(params.timezone, params.date)
+  const dateTimeSegment = `${isoDate}T${startTime}:00${tzOffset}`
 
   const query = new URLSearchParams({ name: params.name, email: params.email })
   if (params.notes) query.set("a1", params.notes)
