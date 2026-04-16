@@ -1,8 +1,7 @@
 "use client"
 import { useState } from "react"
 import { Button } from "./ui/button"
-import { Heading, Subheading } from "./ui/header"
-import { Text } from "./ui/text"
+import { Subheading } from "./ui/header"
 import Image from "next/image"
 import stoic from "../../public/stoic.png"
 import Link from "next/link"
@@ -42,15 +41,17 @@ export default function Hero({
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <FadeIn>
-              <Heading size="3xl">
+              <h1 className="text-5xl font-semibold tracking-tight text-balance text-foreground sm:text-7xl">
                 FitSoul<span className="align-top text-sm">™</span>
-              </Heading>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <Subheading size="lg">{t.tagline}</Subheading>
+              </h1>
+              <FadeIn delay={0.1}>
+                <Subheading size="lg">{t.tagline}</Subheading>
+              </FadeIn>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <Text>{t.description}</Text>
+              <p className="mt-8 text-lg font-medium text-pretty text-muted-foreground sm:text-xl/8">
+                {t.description}
+              </p>
             </FadeIn>
 
             <FadeIn delay={0.3}>

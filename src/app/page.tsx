@@ -1,4 +1,4 @@
-import Content from "~/components/Content"
+import AboutMe from "~/components/AboutMe"
 import Hero from "~/components/Hero"
 import Mission from "~/components/Mission"
 import { calendlyApi } from "~/lib/calendly"
@@ -15,7 +15,7 @@ export default async function Page() {
     <>
       <Hero availability={availability} t={t.hero} />
       <Mission t={t.mission} />
-      <Content t={t.about} />
+      <AboutMe t={t.about} />
     </>
   )
 }
