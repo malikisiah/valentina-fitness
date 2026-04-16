@@ -25,6 +25,7 @@ export default function BookSession({
   const allRules: AvailabilityRule[] = availability.collection.flatMap(
     (schedule) => schedule.rules
   )
+  const timezone = availability.collection[0]?.timezone ?? "UTC"
   const unavailableDays = getUnavailableDays(allRules)
 
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(
@@ -77,7 +78,7 @@ export default function BookSession({
               <Text className="mt-0.5">{slot}</Text>
               {selectedSlot === slot && (
                 <Link
-                  href={`/schedule/confirm?date=${selectedDate!.toISOString()}&slot=${slot}`}
+                  href={`/schedule/confirm?date=${selectedDate!.toISOString()}&slot=${slot}&timezone=${encodeURIComponent(timezone)}`}
                   className="ml-auto"
                 >
                   <Button>Book</Button>

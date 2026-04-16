@@ -34,10 +34,12 @@ import { Translations } from "~/lib/i18n"
 export default function ConfirmSessionForm({
   date,
   slot,
+  timezone,
   t,
 }: {
   date: Date
   slot: string
+  timezone: string
   t: Translations["confirm"]
 }) {
   const searchParams = useSearchParams()
@@ -58,7 +60,7 @@ export default function ConfirmSessionForm({
   function onSubmit(data: BookingFormValues): void {
     setBookingError(null)
     try {
-      const url = calendlyApi.buildBookingUrl({ ...data, date, slot })
+      const url = calendlyApi.buildBookingUrl({ ...data, date, slot, timezone })
       router.push(url)
     } catch {
       setBookingError("Unable to generate booking link. Please try again.")
