@@ -1,6 +1,6 @@
 import { AvailabilityRule, Interval } from "./calendly"
 
-const SLOT_DURATION_MINUTES = 30
+const SLOT_DURATION_MINUTES = 90
 
 const DAYS = [
   "sunday",
